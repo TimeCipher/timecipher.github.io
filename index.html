@@ -34,21 +34,22 @@
 
     let RootGlitch = 0
     function RootGlitchText() {
-        if (RootGlitch < 50) {
+        if (RootGlitch < 10) {
             document.getElementById('PageTag').value = 'Root Chat';
             document.getElementById('CaptionTxt').value = 'The Swift Manager';
-        } else if (RootGlitch >= 50) {
+        } else if (RootGlitch >= 10) {
             document.getElementById('PageTag').value = 'R0ot C6at';
             document.getElementById('CaptionTxt').value = 'The Swift Manager';
-        } else if (RootGlitch >= 50) {
+        } else if (RootGlitch >= 20) {
             document.getElementById('PageTag').value = '1Root Chat';
             document.getElementById('CaptionTxt').value = 'The Swift Manager';
-        } else if (RootGlitch >= 50) {
+        } else if (RootGlitch >= 25) {
             document.getElementById('PageTag').value = '2Root Chat';
             document.getElementById('CaptionTxt').value = 'The Swift Manager';
         }
 
         RootGlitch += 1
+        if (RootGlitch > 30){RootGlitch = 0}
     }
 
 
