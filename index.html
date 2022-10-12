@@ -6,9 +6,9 @@
       margin: auto;
       font-family:'Helvetica';
       background-color: black;
-    };
+    }
     p {
-        color: #FFFFFF;
+        color: white;
         font-family:'Helvetica';
     }
 </style>
@@ -21,12 +21,17 @@
     </h2>
     <h4 id="CaptionTxt">The swift messager</h4>
     <div>
-        <p id="Content" style="font-family:'Helvetica'">Unknown</p>
+        <p id="Content" style="font-family:'Helvetica'; color: white;">Unknown</p>
     </div>
     <textarea id="UsrInput"></textarea>
 </body>
 <script>
     //let Socket = new WebSocket('ws://51.210.139.126:1011/');
+
+    let SplitKey = '___+$![(*-%=%-*)]!$+___';
+
+    let UsrName = '';
+    let SetUsrName = false;
 
     Socket.onmessage = ({data}) => {
         //Data = JSON.parse(data);
@@ -43,15 +48,14 @@
     };
 
     setInterval(async () => {
-        if (document.getElementById('name').value.endsWith('\n')) {
-            CurrentFic = document.getElementById('name').value;
-            document.getElementById('name').value = '';
-            CurrentFic = CurrentFic.replace('\n','');
-            //FicData['Content'] = readTextFile("file://./"+CurrentFic+"/"+"Content.txt");
-            //FicData['FicTitle'] = Fics[CurrentFic]['Title']
-            //FicData['Content'] = Fics[CurrentFic]['Content']
-            //console.log(':-'+CurrentFic+'-:')
-            Socket.send('GetFic '+CurrentFic);
+        if (document.getElementById('UsrInput').value.endsWith('\n')) {
+            MessageInBox = document.getElementById('UsrInput').value;
+            document.getElementById('UsrInput').value = '';
+            MessageInBox = MessageInBox.replace('\n','');
+            if (SetUsrName == false) {
+                Socket.send('SetUsr'+SplitKey+MessageInBox);
+                SetUsrName == true
+            }
         };
     }, 1000);
 </script>
