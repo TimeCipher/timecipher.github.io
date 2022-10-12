@@ -34,22 +34,21 @@
 
     let RootGlitch = 0
     function RootGlitchText() {
-        if (RootGlitch < 10) {
+        if (RootGlitch < 3){
             document.getElementById('PageTag').value = 'Root Chat';
-            document.getElementById('CaptionTxt').value = 'The Swift Manager';
-        } else if (RootGlitch >= 10) {
-            document.getElementById('PageTag').value = 'R0ot C6at';
-            document.getElementById('CaptionTxt').value = 'The Swift Manager';
-        } else if (RootGlitch >= 20) {
-            document.getElementById('PageTag').value = '1Root Chat';
-            document.getElementById('CaptionTxt').value = 'The Swift Manager';
-        } else if (RootGlitch >= 25) {
-            document.getElementById('PageTag').value = '2Root Chat';
-            document.getElementById('CaptionTxt').value = 'The Swift Manager';
+            document.getElementById('CaptionTxt').value = 'The Swift Messager';
+        }
+        if (RootGlitch >= 3){
+            document.getElementById('PageTag').value = 'R0ot Cha1';
+            document.getElementById('CaptionTxt').value = 'The Swift Messager';
+        }
+        if (RootGlitch >= 6){
+            document.getElementById('PageTag').value = 'Ro01 Ch4t';
+            document.getElementById('CaptionTxt').value = 'The Swift Messager';
         }
 
         RootGlitch += 1
-        if (RootGlitch > 30){RootGlitch = 0}
+        if (RootGlitch == 8) {RootGlitch=0}
     }
 
 
