@@ -1,0 +1,123 @@
+<title id="Page Title">RootChat</title>
+<style>
+    body {
+      background-color: black;
+    }
+    p {
+        color: white;
+        font-family:'Helvetica';
+    }
+</style>
+<head>
+    <title id="PageTitle" style="color: white;">RootChat</title>
+</head>
+<body>
+    <div style="width: 750px; margin: auto; font-family:'Helvetica';">
+        <h2 id="PageTag" style="color: white;">
+            Root Chat
+        </h2>
+        <h4 id="CaptionTxt" style="color: white;">The swift messager</h4>
+        <div style="border: 0px solid white;  margin: auto; text-align: center; width: 300px;">
+            <p id="Content" style="font-family:'Helvetica'">Enter Username:</p>
+        </div>
+
+        <div style="border: 2px solid white;  margin: auto; text-align: center; width: 400px; height: 350px;">
+            <p id="Msg10"></p>
+            <p id="Msg9"></p>
+            <p id="Msg8"></p>
+            <p id="Msg7"></p>
+            <p id="Msg6"></p>
+            <p id="Msg5"></p>
+            <p id="Msg4"></p>
+            <p id="Msg3"></p>
+            <p id="Msg2"></p>
+            <p id="Msg1"></p>
+        </div>
+
+        <div style="border: 0px solid white;  margin: auto; text-align: center; width: 300px;">
+            <p> </p>
+            <textarea id="UsrInput" style="resize: none;" rows="2" cols="30"></textarea>
+        </div>
+    </div>
+</body>
+<script>
+    let Socket = new WebSocket('ws://localhost:1011/');
+
+    let SplitKey = '___+$![(*-%=%-*)]!$+___';
+
+    let UsrName = '';
+    let SetUsrName = false;
+
+    let RootGlitch = 0
+    function RootGlitchText() {
+        if (RootGlitch < 3){
+            document.getElementById('PageTag').innerHTML = 'Root Chat';
+            document.getElementById('CaptionTxt').innerHTML = 'The Swift Messager';
+        }
+        if (RootGlitch >= 3){
+            document.getElementById('PageTag').innerHTML = 'R0ot Cha1';
+            document.getElementById('CaptionTxt').innerHTML = 'The Sw1ft Mes54ger';
+        }
+        if (RootGlitch >= 6){
+            document.getElementById('PageTag').innerHTML = 'Ro01 Ch4t';
+            document.getElementById('CaptionTxt').innerHTML = 'Th3 5w1ft M3s54ger';
+        }
+        if (RootGlitch >= 9){
+            document.getElementById('PageTag').innerHTML = 'R001 Ch41';
+            document.getElementById('CaptionTxt').innerHTML = 'Th3 5w1f1 M3554g3r';
+        }
+
+        RootGlitch += 1
+        if (RootGlitch == 11) {RootGlitch=0}
+    }
+
+
+    function MoveMsgsUp(){
+        document.getElementById('Msg10').innerHTML = document.getElementById('Msg9').innerHTML;
+        document.getElementById('Msg9').innerHTML = document.getElementById('Msg8').innerHTML;
+        document.getElementById('Msg8').innerHTML = document.getElementById('Msg7').innerHTML;
+        document.getElementById('Msg7').innerHTML = document.getElementById('Msg6').innerHTML;
+        document.getElementById('Msg6').innerHTML = document.getElementById('Msg5').innerHTML;
+        document.getElementById('Msg5').innerHTML = document.getElementById('Msg4').innerHTML;
+        document.getElementById('Msg4').innerHTML = document.getElementById('Msg3').innerHTML;
+        document.getElementById('Msg3').innerHTML = document.getElementById('Msg2').innerHTML;
+        document.getElementById('Msg2').innerHTML = document.getElementById('Msg1').innerHTML;
+    }
+
+    Socket.onmessage = ({data}) => {
+        let SplData = data.split(SplitKey);
+        if (SplData[0] == 'Msg') {
+            MoveMsgsUp();
+            document.getElementById('Msg1').innerHTML = '['+SplData[1]+']: '+SplData[2]
+        };
+        if (SplData[0] == 'Location') {
+            MoveMsgsUp();
+            document.getElementById('Content').innerHTML = 'Located in: '+SplData[1];
+        };
+    };
+
+    setInterval(async () => {
+        RootGlitchText();
+    }, 50);
+
+    setInterval(async () => {
+        if (document.getElementById('UsrInput').value.endsWith('\n')) {
+            MessageInBox = document.getElementById('UsrInput').value;
+            document.getElementById('UsrInput').value = '';
+            MessageInBox = MessageInBox.replace('\n','');
+            if (SetUsrName == false) {
+                if (MessageInBox != '') {
+                    Socket.send('SetUsr'+SplitKey+MessageInBox);
+                    SetUsrName = true;
+                    document.getElementById('Content').innerHTML = 'Located in: Lobby';
+                }
+            } else {
+                if (MessageInBox != '') {
+                    Socket.send('Msg'+SplitKey+MessageInBox);
+                }
+            }
+        };
+
+        //RootGlitchText();
+    }, 100);
+</script>
