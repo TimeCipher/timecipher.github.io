@@ -11,7 +11,7 @@ class MessageObj {
 }
 
 // var Socket = new WebSocket("ws://127.0.0.1:9752/")
-var Socket = new WebSocket("ws://23.142.248.44:9752/")
+var Socket = new WebSocket("wss://23.142.248.44:9752/")
 
 Socket.onmessage = ({data}) => {
     // console.log(data);
