@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins',sans-serif;
+    overflow: hidden;
+}
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background: url('Background.webp') no-repeat;
+    /* background: black; */
+    background-position: center;
+    background-size: cover;
+}
+.headerlogo{
+    position: relative;
+    height: 12.5vb;
+    background: transparent;
+}
+
+h1{
+    font-size: 2.25em;
+    color: #fff;
+    text-align: center;
+}
+h2{
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+}
+
+.form-box{
+    /* position: relative; */
+    width: 40vw;
+    height: 70vh;
+    background: transparent;
+    backdrop-filter: blur(50px);
+    border: 2px solid rgba(235,235,235,1);
+    margin-top: 3vh;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.log-box{
+    /* position: relative; */
+    width: 35vw;
+    background: black;
+    /* background: #141414; */
+    border: 2px solid rgb(82, 82, 82);
+    margin-top: 1vh;
+    border-radius: 20px;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    overflow: visible;
+}
+
+.log-box .text-align {
+    width: 100%;
+    min-height: 20vh;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background: transparent;
+}
+
+.log-box .text-align .date{
+    font-size: 0.75em;
+    color: #fff;
+    text-align: left;
+}
+
+.log-box .text-align .content{
+    font-size: 1em;
+    color: #fff;
+    text-align: left;
+    margin-top: 2%;
+}
+
+.Blue{
+    color: #1619db;
+}
