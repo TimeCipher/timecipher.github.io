@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'poppins',sans-serif;
+    font-family: consolas;
     overflow: hidden;
 }
 section{
@@ -84,5 +84,6 @@ h2{
 }
 
 .Blue{
-    color: #1619db;
+    color: #1f6feb;
+    font-weight: 700;
 }
