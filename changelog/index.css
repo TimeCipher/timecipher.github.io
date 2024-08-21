@@ -34,7 +34,7 @@ h2{
 
 @media only screen and (max-width: 720px) {
     .form-box {
-        width: 90vw;
+        width: 90vw !important;
     }
 }
 
