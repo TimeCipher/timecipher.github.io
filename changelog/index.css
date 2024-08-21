@@ -34,13 +34,13 @@ h2{
 
 @media only screen and (max-width: 720px) {
     .headerlogo {
-        display: none;
+        display: none !important;
     }
     .form-box {
         width: 90vw !important;
     }
     .log-box {
-        width: 85vw
+        width: 85vw !important;
     }
 }
 
