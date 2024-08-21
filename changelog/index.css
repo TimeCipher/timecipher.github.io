@@ -32,6 +32,12 @@ h2{
     text-align: center;
 }
 
+@media only screen and (max-width: 720px) {
+    .form-box {
+        width: 90vw;
+    }
+}
+
 .form-box{
     /* position: relative; */
     width: 40vw;
